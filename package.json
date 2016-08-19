@@ -23,6 +23,9 @@
     "tns-core-modules": "2.2.1"
   },
   "devDependencies": {
+    "awesome-typescript-loader": "2.1.1",
+    "nativescript-dev-webpack": "dev",
+    "webpack-fail-plugin": "^1.0.5",
     "babel-traverse": "6.13.0",
     "babel-types": "6.13.0",
     "babylon": "6.9.0",
