@@ -10,10 +10,12 @@
     }
   },
   "scripts": {
-      "clean": "shx rm -rf app/**/*.css app/**/*.js",
-      "webpack-android": "webpack --config=config/webpack.android.js",
-      "prerun-android": "npm run webpack-android",
-      "run-android": "tns run android --bundle"
+    "clean": "shx rm -rf app/**/*.css app/**/*.js",
+    "webpack-android": "webpack --config=config/webpack.android.js",
+    "prerun-android": "npm run webpack-android",
+    "run-android": "tns run android --bundle",
+    "livesync-android": "tns livesync android --watch --bundle",
+    "start-android": "nf start"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.5",
@@ -35,6 +37,7 @@
     "babel-types": "6.13.0",
     "babylon": "6.9.0",
     "copy-webpack-plugin": "^3.0.1",
+    "foreman": "^1.4.1",
     "html-loader": "^0.4.3",
     "lazy": "1.0.11",
     "shx": "^0.1.4",
