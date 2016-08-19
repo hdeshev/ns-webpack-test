@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 
 @Component({
     selector: "my-app",
-    templateUrl: "app.component.html",
+    template: require("./app.component.html"),
 })
 export class AppComponent {
     public counter: number = 16;
