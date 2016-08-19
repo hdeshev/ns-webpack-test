@@ -1,5 +1,6 @@
 node_modules
 platforms
+app/**/*.css
 app/**/*.js
 app/**/*.map
 hooks
