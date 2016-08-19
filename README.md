@@ -12,7 +12,7 @@ This project does things differently.
 ## What do we gain from all this?
 
 - Simple setup without needing to modify the nativescript-cli code.
-- *FAST* syncs! The bundle is split in two chunks: `tns-java-classes.js` and `bundle.js`. The former contains all vendor modules (We'll rename it to `vendor.js` eventually, see below.). The latter contains just the app code, which in our case is about 2.5 KB. The *only* file that usually gets synced is `bundle.js`. And it happens instantly.
+- **FAST** syncs! The bundle is split in two chunks: `tns-java-classes.js` and `bundle.js`. The former contains all vendor modules (We'll rename it to `vendor.js` eventually, see below.). The latter contains just the app code, which in our case is about 2.5 KB. The **only** file that usually gets synced is `bundle.js`. And it happens instantly.
 - Decoupled directory structure from the current nativescript-cli assumptions. We can now move our source code around, place it next to web platform code, and share certain Angular services.
 
 ## Running the project
@@ -20,6 +20,8 @@ This project does things differently.
 1. `tns install`
 2. `npm run start-android`
 3. (Edit `ts`, `html`, `css` files, and enjoy fast device syncs).
+
+![syncs](README-syncs.png)
 
 ## What needs more work
 
@@ -29,4 +31,3 @@ This project does things differently.
 - This project doesn't use webpack's hot module reloading feature. We'll explore that elsewhere.
 - Images and App\_Resources are stored below `./app`. We should move them somewhere else, and `CopyWebPackPlugin` them to `./app`.
 - Figure out the fastest webpack dev build settings: sourcemaps, forked typechecker plugin, babel caching, etc. 
-- 
