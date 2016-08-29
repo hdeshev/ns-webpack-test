@@ -42,7 +42,7 @@
     "lazy": "1.0.11",
     "shx": "^0.1.4",
     "typescript": "^1.8.10",
-    "webpack": "1.13.2",
-    "webpack-fail-plugin": "^1.0.5"
+    "webpack": "2.1.0-beta.21",
+    "webpack-sources": "0.1.2"
   }
 }

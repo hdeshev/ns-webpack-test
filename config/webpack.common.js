@@ -1,8 +1,7 @@
 var webpack = require("webpack");
-var ConcatSource = require("webpack/lib/ConcatSource");
+var ConcatSource = require("webpack-sources").ConcatSource;
 //var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 var path = require("path");
-var failPlugin = require("webpack-fail-plugin");
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 //HACK: changes the JSONP chunk eval function to `global["nativescriptJsonp"]`
@@ -30,6 +29,25 @@ FixJsonpPlugin.prototype.apply = function(compiler) {
     });
 };
 
+//HACK: clone webpack-fail-plugin here since it's peerDependencies point to
+//webpack 1.x
+function FailPlugin() {
+  var isWatch = true;
+
+  this.plugin("run", function(compiler, callback) {
+    isWatch = false;
+    callback.call(compiler);
+  });
+
+  this.plugin("done", function(stats) {
+    if (stats.compilation.errors && stats.compilation.errors.length && !isWatch) {
+      process.on('beforeExit', function() {
+        process.exit(1);
+      });
+    }
+  });
+}
+
 module.exports = {
     context: path.resolve("./src"),
     entry: {
@@ -49,7 +67,7 @@ module.exports = {
             "",
             ".js",
         ],
-        modulesDirectories: [
+        modules: [
             "node_modules/tns-core-modules",
             "node_modules"
         ]
@@ -70,7 +88,7 @@ module.exports = {
         ]
     },
     plugins: [
-        failPlugin,
+        FailPlugin,
         new webpack.optimize.CommonsChunkPlugin({
             name: ["tns-java-classes"]
         }),

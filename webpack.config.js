@@ -23,7 +23,7 @@ module.exports = {
             ".js",
             ".android.js"
         ],
-        modulesDirectories: [
+        modules: [
             "node_modules/tns-core-modules",
             "node_modules"
         ]
