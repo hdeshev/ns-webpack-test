@@ -11,6 +11,7 @@
   },
   "scripts": {
     "clean": "shx rm -rf app/**/*.css app/**/*.js",
+    "prewebpack-android": "shx sed -i 's/.*es6\\.d\\.ts.*/ /' node_modules/tns-core-modules/tns-core-modules.d.ts",
     "webpack-android": "webpack --config=config/webpack.android.js",
     "prerun-android": "npm run webpack-android",
     "run-android": "tns run android --bundle",
@@ -41,7 +42,7 @@
     "html-loader": "^0.4.3",
     "lazy": "1.0.11",
     "shx": "^0.1.4",
-    "typescript": "^1.8.10",
+    "typescript": "^2.0.0",
     "webpack": "2.1.0-beta.21",
     "webpack-sources": "0.1.2"
   }
